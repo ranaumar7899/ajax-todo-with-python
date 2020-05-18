@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrfmiddlewaretoken" content="{{ csrf_token }}">
+    <title>Todo | create your todo list</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% block ru_style_files %}
+    {% endblock %}
+</head>
+<body>
+<div class="ru_ajax_wait"></div>
+<script>
+    var ru_ajax_url= "{% url 'index' %}";
+</script>
+{% block content %}
+{% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% block ru_script_files %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!-- extend base template -->
+{% extends 'base.html' %}
+
+<!-- load app static -->
+{% load static %}
+
+<!-- load custom style for this page -->
+{% block ru_style_files %}
+
+{% endblock %}
+
+<!-- load page content -->
+{% block content %}
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-12">
+                <div class="card px-3">
+                    <div class="card-body">
+                        <h4 class="card-title">My Todo list</h4>
+                        <div class="add-items d-flex">
+                            <form action="" method="" id="add_list_form" style="display:contents;">
+                                {% csrf_token %}
+                                <input type="text" name="title" class="form-control todo-list-input" placeholder="What do you need to do today?">
+                                <button type="submit" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+                            </form>
+                        </div>
+                        <div class="list-wrapper">
+                            <ul class="d-flex flex-column-reverse todo-list">
+                                {% for todo in todo_list %}
+                                <li class="list_item_{{todo.id}} {% if todo.complete == True %} completed {% endif %}">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox mark_complete mark_complete_{{todo.id}}" name="mark_complete" type="checkbox"  {% if todo.complete == True %} checked="" {% endif %} data-itemid="{{todo.id}}">
+                                                {{ todo }}
+                                            <i class="input-helper">
+                                            </i>
+                                        </label>
+                                    </div>
+                                    <i class="remove mdi mdi-close-circle-outline remove_item mark_complete_{{todo.id}}{{todo.id}}" data-itemid="{{todo.id}}"></i>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- load custom script for this page script -->
+{% block ru_script_files %}
+
+{% endblock %}
